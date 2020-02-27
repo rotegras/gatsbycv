@@ -15,7 +15,6 @@ const useStyles = makeStyles({
     textTransform: 'lowercase',
     textDecoration: 'none',
     color: '#111',
-
   }
 });
 
