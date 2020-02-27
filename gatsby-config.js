@@ -4,6 +4,7 @@ module.exports = {
     description: `rotegras is a design and development office in Berlin`,
     author: `rotegras`,
   },
+  pathPrefix: "/gatsbycv",
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
