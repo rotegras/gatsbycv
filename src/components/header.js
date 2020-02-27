@@ -1,8 +1,22 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
+import { makeStyles } from '@material-ui/styles'
 import React from "react"
+import Menu from './menu'
 
-const Header = ({ siteTitle }) => (
+
+const useStyles = makeStyles({
+  brand: {
+
+    display: 'flex',
+    alignItems: 'center',
+  }
+})
+
+const Header = ({ siteTitle }) => {
+  const classes = useStyles()
+
+  return (
   <header
     style={{
       background: `white`,
@@ -18,26 +32,25 @@ const Header = ({ siteTitle }) => (
         justifyContent: 'space-between',
       }}
     >
-      <h1 style={{ margin: 0 }}>
+        <h1 className={classes.brand}>
         <Link
           to="/"
           style={{
             color: `#999`,
             textDecoration: `none`,
             fontSize: '1rem',
-            border: '1px dashed black'
-
+            lineHeight: '1rem',
+            margin: 0,
           }}
         >
           {siteTitle}
         </Link>
       </h1>
-      <div>
-        <Link to="/">homepage</Link>
-      </div>
+      <Menu />
     </div>
   </header>
-)
+  )
+}
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
