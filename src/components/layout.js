@@ -8,11 +8,25 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
-
+import { makeStyles } from '@material-ui/core'
 import Header from "./header"
 import "./layout.css"
 
+const useStyles = makeStyles({
+  layout: {
+    margin: `0 auto`,
+    maxWidth: 1140,
+    padding: `40px 1.0875rem 1.45rem`,
+    backgroundColor: 'yellow',
+    minHeight: '100vh',
+    fontFamily: 'serif',
+    fontWeight: '900',
+  }
+})
+
+
 const Layout = ({ children }) => {
+  const classes = useStyles();
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -27,12 +41,7 @@ const Layout = ({ children }) => {
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
       <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0px 1.0875rem 1.45rem`,
-          paddingTop: 0,
-        }}
+        className={classes.layout}
       >
         <main>{children}</main>
         <footer>

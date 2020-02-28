@@ -7,25 +7,19 @@ import Image from "../components/image"
 import SEO from "../components/seo"
 
 const useStyles = makeStyles({
-  title: {
-    fontSize: '1.5rem', 
+  container: {
+    // backgroundColor: 'yellow',
   },
-  menuItem: {
-    paddingRight: '.5rem',
-    fontSize: '.875rem',
-    textTransform: 'uppercase',
-    textDecoration: 'none',
-    color: '#111',
-
-  }
-
+  title: {
+    fontSize: '1.5rem',
+  },
 });
 
 const IndexPage = () => {
   const classes = useStyles();
 
   return (
-    <Layout>
+    <Layout className={classes.container}>
     <SEO title="Home" />
     <h1 className={classes.title}>Portfolio</h1>
     <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>

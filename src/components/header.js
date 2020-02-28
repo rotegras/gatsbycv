@@ -6,8 +6,22 @@ import Menu from './menu'
 
 
 const useStyles = makeStyles({
+  header: {
+    background: `white`,
+    marginBottom: `.45rem`,
+    backgroundColor: 'yellow',
+    position: 'fixed',
+    width: '100%',
+    height: '40px',
+  },
+  header__inner: {
+    margin: `0 auto`,
+    maxWidth: 1140,
+    padding: `.45rem 1.0875rem`,
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
   brand: {
-
     display: 'flex',
     alignItems: 'center',
   }
@@ -17,19 +31,10 @@ const Header = ({ siteTitle }) => {
   const classes = useStyles()
 
   return (
-  <header
-    style={{
-      background: `white`,
-      marginBottom: `.45rem`,
-    }}
+  <header className={classes.header}
   >
-    <div
+    <div className={classes.header__inner}
       style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `.45rem 1.0875rem`,
-        display: 'flex',
-        justifyContent: 'space-between',
       }}
     >
         <h1 className={classes.brand}>

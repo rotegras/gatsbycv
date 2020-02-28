@@ -5,8 +5,8 @@ import React from "react"
 
 
 const useStyles = makeStyles({
-    menu: {
-        display: 'flex',
+  menu: {
+    display: 'flex',
   },
   menuItem: {
     paddingRight: '.5rem',
