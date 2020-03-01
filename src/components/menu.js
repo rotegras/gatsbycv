@@ -1,5 +1,5 @@
 import { Link } from "gatsby"
-import PropTypes from "prop-types"
+// import PropTypes from "prop-types"
 import { makeStyles } from '@material-ui/styles'
 import React from "react"
 
