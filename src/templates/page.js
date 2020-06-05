@@ -1,5 +1,5 @@
-import React, { Component } from "react"
-import { graphql } from "gatsby"
+import React, { Component } from "react";
+import { graphql } from "gatsby";
 
 class Page extends Component {
   render() {
@@ -10,11 +10,11 @@ class Page extends Component {
         <h1>{StaticPage.title}</h1>
         <div>{StaticPage.content}</div>
       </>
-    )
+    );
   }
 }
 
-export default Page
+export default Page;
 
 export const pageQuery = graphql`
   query($id: String!) {
@@ -30,4 +30,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;
