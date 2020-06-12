@@ -6,6 +6,7 @@ const Wrapper = styled.article`
   position: relative;
   padding: .5rem;
   width: 100%;
+  min-heght: 250px;
 
   @media only screen and (min-width: 768px) {
     width: 33.3%;
