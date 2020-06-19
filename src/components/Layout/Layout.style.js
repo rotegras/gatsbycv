@@ -1,18 +1,23 @@
 import styled from 'styled-components';
 
 const Wrapper = styled.main`
+  position: absolute;
   width: 100%;
   min-height: 100vh;
+  padding: 0 .5rem;
+  height: 100vh;
+  overflow: hidden;
+  top: 0;
 `;
 
 const Inner = styled.div`
-  max-width: 1140px;
-  padding: 40px .5rem;
+  position: relative;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   margin: 0 auto;
-  padding-top: 50px;
+  margin-bottom: 8rem;
+  height: 100%;
 `;
 
 const Footer = styled.footer`

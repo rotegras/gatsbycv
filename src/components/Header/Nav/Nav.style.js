@@ -7,6 +7,7 @@ const Wrapper = styled.nav`
   display: flex;
   width: auto;
   align-items: center;
+  z-index: 100;
 `;
 
 const Item = styled(Link)` 

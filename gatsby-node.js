@@ -9,15 +9,16 @@
 const path= require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 
-exports.createPages=({actions,graphql})=>{
-  const {createPage}= actions
+exports.createPages=({ actions, graphql }) => {
+  const { createPage } = actions;
+  const postTemplate = path.resolve(`./src/templates/ProjectTemplate/ProjectTemplate.js`);
   return graphql(`
   {
     allWordpressWpGatsby(sort:{fields:[date], order:DESC}) {
       edges {
         node {
-          id
           date( formatString: "/YYYY/MM/DD/" )
+          excerpt
           featured_media {
             localFile{
               childImageSharp {
@@ -28,58 +29,37 @@ exports.createPages=({actions,graphql})=>{
               } 
             }
           }
+          id
+          slug
+          title
         }
       }
     }
   }
   `)
-  const postTemplate = path.resolve(`./src/templates/post.js`);
-  result.data.allWordpressPost.edges.forEach(edge => {
-    createPage({
-      // will be the url for the page
-      path: edge.node.slug,
-      // specify the component template of your choice
-      component: slash(postTemplate),
-      // In the ^template's GraphQL query, 'id' will be available
-      // as a GraphQL variable to query for this posts's data.
-      context: {
-        id: edge.node.id,
-      },
-    })
-  });
-  
-  
-  //   .then(result => {
-  //     if (result.errors){
-  //         result.errors.forEach(e => console.error(e.toString()))
-  //         return Promise.reject(result.errors)
-  //     }
-  //     const AllPostsTemplate= path.resolve('./src/templates/AllPosts.js')
-  //     const postTemplate = path.resolve(`./src/templates/post.js`)
-  //     createPage({
-  //         path:'/blog',
-  //         component:AllPostsTemplate,
-  //         context:{
-  //             allData:result.data.allWordpressPost.edges
-  //         }
-  //     })
-  
-  //     const allPosts = result.data.allWordpressPost.edges
-  
-  //     allPosts.forEach(element=>{
-  //         createPage({
-  //             path:`/blog/${element.node.slug}`,
-  //             component:postTemplate,
-  //             context:{
-  //                 id:element.node.id
-  //             }
-  //         })
-  //     })
-  // })
+  .then(result => {
+    if (result.errors) {
+      reporter.panicOnBuild(`Error while running GraphQL query.`);
+      return;
+    }
+    result.data.allWordpressWpGatsby.edges.forEach(edge => {
+      createPage({
+        // will be the url for the page
+        path: `/project/${edge.node.slug}`,
+        // specify the component template of your choice
+        component: postTemplate,
+        // In the ^template's GraphQL query, 'id' will be available
+        // as a GraphQL variable to query for this posts's data.
+        context: {
+          slug: edge.node.slug,
+        },
+      })
+    });
+  })
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+  const { createNodeField } = actions;
   
   if (node.internal.type === `MarkdownRemark`) {
     const value = createFilePath({ node, getNode })

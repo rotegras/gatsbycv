@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { graphql } from "gatsby";
-import GridElement from '../components/GridElement';
+import Grid from '../components/Grid';
 import Layout from "../components/Layout";
 import SEO from "../components/seo";
 
@@ -12,14 +12,7 @@ class Homepage extends Component {
     return (
       <Layout>
         <SEO title="Home" />
-        {
-          data.allWordpressWpGatsby.edges.map((item) => (
-            <GridElement
-              content={item.node}
-              key={item.slug}
-            />
-          ))
-        }
+        <Grid content={data} />
       </Layout>
       )
     }
@@ -44,6 +37,7 @@ class Homepage extends Component {
                 }
               }
             }
+            slug
             tags {
               name
             }

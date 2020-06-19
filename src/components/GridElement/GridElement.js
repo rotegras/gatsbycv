@@ -1,7 +1,6 @@
-import React from "react"
-import PropTypes from 'prop-types'
+import React from 'react';
 import {
-  Wrapper, Inner, Title, Excerpt, Image
+  Wrapper, WrapperLink, Title, Excerpt, Image
 } from './GridElement.style';
 
 
@@ -19,7 +18,7 @@ export default function GridElement({ content }) {
 
   return (
     <Wrapper>
-      <Inner>
+        <WrapperLink to={`/project/${item.slug}`}>
         {
           item.image && <Image
             imgStyle={{ objectFit: 'contain' }}
@@ -27,16 +26,14 @@ export default function GridElement({ content }) {
             alt={item.title}
           />
         }
-
-        <Excerpt dangerouslySetInnerHTML={createMarkup(item.excerpt)} />
-
         <Title>{item.title}</Title>
-      </Inner>
+        <Excerpt dangerouslySetInnerHTML={createMarkup(item.excerpt)} />
+      </WrapperLink>
     </Wrapper>
     )
   }
   
-GridElement.propTypes = {
-  content: PropTypes.shape(PropTypes.any).isRequired,
-  imageData: PropTypes.string,
-}
+// GridElement.propTypes = {
+//   content: PropTypes.shape(PropTypes.any).isRequired,
+//   imageData: PropTypes.string,
+// }

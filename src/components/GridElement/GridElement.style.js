@@ -1,26 +1,24 @@
 import styled from 'styled-components';
 import Img from 'gatsby-image';
+import { Link } from 'gatsby';
 
 
 const Wrapper = styled.article`
   position: relative;
-  padding: .5rem;
+  padding: 1rem;
   width: 100%;
-  min-heght: 250px;
+  min-heght: 450px;
 
   @media only screen and (min-width: 768px) {
     width: 33.3%;
   }
 `;
 
-const Inner = styled.div`
+const WrapperLink = styled(Link)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
-  padding: .5rem;
-  box-shadow: 0 0 10px rgba(0,0,0,.1);
-  border: 1px solid #eee;
 `;
 
 const Title = styled.h3`
@@ -30,8 +28,9 @@ const Title = styled.h3`
   font-weight: 700;
   line-height: 1;
   color: #111;
-  padding-right: 50%;
+  margin-top: 0;
   margin-bottom: 0;
+  padding-right: 50%;
 `;
 
 const Excerpt = styled.p`
@@ -40,15 +39,15 @@ const Excerpt = styled.p`
   font-weight: 300;
   line-height: 1;
   color: #111;
-  margin-bottom: .25rem;
-  margin-top: auto;
-  padding-top: .5rem;
+  margin-top: 0;
   padding-right: 25%;
 `;
 
 const Image = styled(Img)`
   margin-bottom: .5rem;
+  box-shadow: 0 0 10px rgba(0,0,0,.1);
+  border: 1px solid #eee;
 `;
 
 
-export { Wrapper, Inner, Title, Excerpt, Image };
+export { Wrapper, WrapperLink, Title, Excerpt, Image };
