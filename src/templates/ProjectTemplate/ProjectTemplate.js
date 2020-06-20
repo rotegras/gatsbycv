@@ -31,7 +31,7 @@ function ProjectTemplate({ data, pageContext }) {
             <BkgImage 
               Tag="section"
               fluid={imageFluid}
-              backgroundColor={`#fff`}
+              backgroundColor={`#111`}
               isDarken="true"
             >
             <Content>
@@ -83,7 +83,7 @@ ProjectTemplate.defaultProps = {
         local_file: {
           childImageSharp: {
             fluid: {
-              aspectRatio1: 935483870967742,
+              aspectRatio1: 0.94,
               base64: "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAYAAAC0VX7mAAAACXBIWXMAAAsSAAALEgHS3X78AAABp0lEQVQoz4WSTU9TQRiF+VVsXIsJuvAPsHDv0oUrlm4wtrRAXOmCkEAiIW6AGHLTJgVL+AhaWlqwCYSP23tLRVvu59yZh7mFkltAPMmbk5m875kzc2ZAKUVcMRzHxbl0+B/ifiEEYRh2ubcXYyApKKXUTaLLfuBjmiaNholtW9jNJk3rlJPDfTzf785EMrqdvRVMnnoXIojw3BApFHoW1bFRrV8POu7hnsPC6gYr+TwHVpnD8wrWRYW6fV1lq8qOuc/OaZlao8Rxq36jeMdhbyEiwYuXr3gyPMxcaYqFUpb5n1k+b08wWczw5luat8Y47wpZPm2lWK7N0jP3T8Fnz0cYHHrK93qGpXKar6UUcz/GyRRTvF7+wGg+RXY9zdjae77sziAfE4yvPPlxmv...",
               sizes: "(max-width: 1908px) 100vw, 1908px",
               src: "/static/8676958a75d8d4c57fa99803a481584c/71b07/project_ooloo-io.png",

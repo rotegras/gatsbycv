@@ -4,12 +4,18 @@ import { Link } from 'gatsby';
 
 
 const Body = styled.div`
+  min-width: 100%;
+  float: none;
+  clear: both;
+  margin-bottom: .5rem;
 
   > p {
-    padding: .5rem;
+    padding: .25rem 1.5rem .25rem .5rem;
     background: #fff;
     width: auto;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
+    display: block;
+    float: left;
   }
 `;
 
@@ -19,6 +25,15 @@ const BkgImage = styled(BackgroundImage)`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+
+  &::before,
+  &::after {
+    filter: invert(
+      ${({ isDarken }) => {
+        return isDarken ? '5%' : '0%'
+      }}
+    );
+  }
 `;
 
 const Content = styled.div`
@@ -42,10 +57,10 @@ const ImageWrapper = styled.div`
 const ProjectNavigation = styled.div`
   position: absolute;
   bottom: 1rem;
-  right: 1rem;
+  right: 2rem;
   display: flex;
-  width: 400px;
-  margin-bottom: 1rem;
+  width: 200px;
+  margin-bottom: .75rem;
   justify-content: space-between;
 `;
 
@@ -75,6 +90,7 @@ const Title = styled.h1`
 `;
 
 const TagWrapper = styled.ul`
+  min-width: 100%;
   list-style: none;
   display: flex;
   padding: 0;

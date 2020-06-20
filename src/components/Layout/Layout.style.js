@@ -15,7 +15,6 @@ const Inner = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   margin: 0 auto;
-  margin-bottom: 8rem;
   height: 100%;
 `;
 
