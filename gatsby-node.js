@@ -19,16 +19,6 @@ exports.createPages=({ actions, graphql }) => {
         node {
           date( formatString: "/YYYY/MM/DD/" )
           excerpt
-          featured_media {
-            localFile{
-              childImageSharp {
-                id
-                fluid {
-                  src
-                }
-              } 
-            }
-          }
           id
           slug
           title
@@ -52,6 +42,7 @@ exports.createPages=({ actions, graphql }) => {
         // as a GraphQL variable to query for this posts's data.
         context: {
           slug: edge.node.slug,
+          
         },
       })
     });

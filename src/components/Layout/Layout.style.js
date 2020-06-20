@@ -4,9 +4,8 @@ const Wrapper = styled.main`
   position: absolute;
   width: 100%;
   min-height: 100vh;
-  padding: 0 .5rem;
+  padding: 0;
   height: 100vh;
-  overflow: hidden;
   top: 0;
 `;
 

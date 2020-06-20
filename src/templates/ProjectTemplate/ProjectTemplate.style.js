@@ -33,7 +33,7 @@ const Content = styled.p`
 const TagWrapper = styled.ul`
   list-style: none;
   display: flex;
-  padding: 0 0 4rem;
+  padding: 0 0 1rem;
   margin: 0;
   z-index: 200 !important;
 `;
