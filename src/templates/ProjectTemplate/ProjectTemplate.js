@@ -3,14 +3,26 @@ import { graphql } from "gatsby"
 import PropTypes from "prop-types"
 import Layout from '../../components/Layout'
 import {
-  BkgImage, ImageWrapper, Title, Content, Tag, TagWrapper,
+  BkgImage,
+  Body,
+  Content,
+  ImageWrapper,
+  NavLink,
+  NextLink,
+  ProjectNavigation,
+  Tag,
+  TagWrapper,
+  Title,
 } from './ProjectTemplate.style';
 
 // class Post extends Component {
-function Post({ data }) {
+function Post({ data, pageContext }) {
     const post = data.wordpressWpGatsby
     const { content, tags, title, featured_media } = post;
     const imageFluid = featured_media.localFile.childImageSharp.fluid;
+
+    const nextProjectSlug = pageContext.next.slug;
+    const prevProjectSlug = pageContext.prev.slug;
 
     return (
       <Layout>
@@ -21,9 +33,13 @@ function Post({ data }) {
               backgroundColor={`#fff`}
               isDarken="true"
             >
-
-              <Title>{title}</Title>
-              <Content
+            <Content>
+              <Title>
+                <span>
+                  {title}
+                </span>
+              </Title>
+              <Body
                   dangerouslySetInnerHTML={{ __html: content }}
               />
               <TagWrapper>
@@ -33,6 +49,18 @@ function Post({ data }) {
                 })
               }
               </TagWrapper>
+              </Content>
+
+              <ProjectNavigation>
+                {
+                  prevProjectSlug &&
+                  <NavLink to={`/project/${prevProjectSlug}`}>Prev</NavLink> 
+                }
+                {
+                  nextProjectSlug &&
+                  <NextLink to={`/project/${nextProjectSlug}`}>Next</NextLink>
+                }
+              </ProjectNavigation>
             </BkgImage>
           </ImageWrapper>
       </Layout>
@@ -41,7 +69,6 @@ function Post({ data }) {
 
 Post.propTypes = {
   data: PropTypes.object.isRequired,
-  // edges: PropTypes.array,
 }
 
 export default Post
@@ -73,6 +100,17 @@ export const postQuery = graphql`
       siteMetadata {
         title
         description
+      }
+    }
+    allWordpressWpGatsby(sort:{fields:[date], order:DESC}) {
+      edges {
+        node {
+          date( formatString: "/YYYY/MM/DD/" )
+          excerpt
+          id
+          slug
+          title
+        }
       }
     }
   }

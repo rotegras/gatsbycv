@@ -18,7 +18,7 @@ module.exports = {
           },
           {
             family: `Montserrat`,
-            variants: [`400`, `700`],
+            variants: [`300`, `400`, `700`],
             subsets: [`latin`]
           },
         ],
@@ -27,12 +27,9 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        // your WordPress source
         baseUrl: `rotegras.com`,
         protocol: `https`,
-        // is it hosted on wordpress.com, or self-hosted?
         hostingWPCOM: false,
-        // does your site use the Advanced Custom Fields Plugin?
         useACF: true
       }
     },

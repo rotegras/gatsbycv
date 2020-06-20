@@ -29,10 +29,24 @@ exports.createPages=({ actions, graphql }) => {
   `)
   .then(result => {
     if (result.errors) {
-      reporter.panicOnBuild(`Error while running GraphQL query.`);
+      reporter.panicOnBuild(`
+        Error while running GraphQL query.
+        ${result.errors} 
+        `);
       return;
     }
-    result.data.allWordpressWpGatsby.edges.forEach(edge => {
+
+    const posts = result.data.allWordpressWpGatsby.edges;
+
+    posts.forEach(( edge, index) => {
+      const prev = index === 0
+        ? false
+        : posts[index - 1].node;
+      const next =
+        index === posts.length - 1
+          ? false
+          : posts[index + 1].node;
+
       createPage({
         // will be the url for the page
         path: `/project/${edge.node.slug}`,
@@ -42,7 +56,8 @@ exports.createPages=({ actions, graphql }) => {
         // as a GraphQL variable to query for this posts's data.
         context: {
           slug: edge.node.slug,
-          
+          prev,
+          next
         },
       })
     });
